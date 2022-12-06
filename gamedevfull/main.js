@@ -23,12 +23,12 @@ window.addEventListener('load', function(){
             this.UI = new UI(this);
             this.enemies = [];
             this.particles = [];
-            this.maxParticles = 50;
+            this.maxParticles = 200;
             this.enemyTimer = 0;
             this.enemyInterval = 1000;
             this.debug = true;
             this.score = 0;
-            this.fontColor = 'black';
+            this.fontColor = 'firebrick';
             this.player.currentState = this.player.states[0];
             this.player.currentState.enter();
         }
