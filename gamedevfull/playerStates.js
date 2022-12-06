@@ -136,8 +136,8 @@ export class Diving extends State {
         if (this.game.player.onGround()){
             this.game.player.setState(states.RUNNING, 1);
             for (let i = 0; i < 30; i++){
-                this.game.particles.unshift(new Splash(this.game, this.game.player.x, 
-                    this.game.player.y));
+                this.game.particles.unshift(new Splash(this.game, this.game.player.x + 
+                    this.game.player.width * 0.5, this.game.player.y + this.game.player.height));
             }
             
         }  else if (input.includes('Enter') && this.game.player.onGround()){
@@ -145,5 +145,26 @@ export class Diving extends State {
       
     }
 }
+}
+
+
+
+export class Hit extends State {
+    constructor(game){
+        super('HIT', game);
+    }
+    enter(){
+        this.game.player.frameX = 0;
+        this.game.player.maxFrame = 10;
+        this.game.player.frameY = 4;
+    }
+    handleInput(input){
+        if (this.game.player.frameX >= 10 && this.game.player.onGround()){
+            this.game.player.setState(states.RUNNING, 1);      
+        }  else if (this.game.player.frameX >= 10 && !this.game.player.onGround()){
+            this.game.player.setState(states.FALLING, 1);
+      
+    }
+  }
 }
 
